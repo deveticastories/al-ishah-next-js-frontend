@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  async redirects() {
+    // The products menu opens on a brand catalogue; Dakota is the default brand
+    return [{ source: "/products", destination: "/products/dakota", permanent: false }];
+  },
   cacheComponents: true,
   partialPrefetching: true,
   turbopack: {

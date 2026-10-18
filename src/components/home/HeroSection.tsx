@@ -1,0 +1,25 @@
+import Button from "@/components/common/Button";
+import PageHero from "@/components/common/PageHero";
+import { Images } from "@/utils/Images";
+import { Routes } from "@/utils/Routes";
+
+export default function HeroSection() {
+  return (
+    <PageHero
+      image={Images.hero}
+      imageAlt="Al Ihsas truck at a container port at sunset"
+      title={["Connecting Global Brands.", "Delivering Quality Products."]}
+      description="Al Ihsas General Trading LLC Distributes A Diverse Range Of Registered Brands, With Products Sourced And Manufactured Across Asia, The Middle East, And Europe."
+      actions={
+        <>
+          <Button href={Routes.products} className="w-[187px]">
+            Explore Products
+          </Button>
+          <Button href={Routes.about} variant="outline" className="w-[187px]">
+            About Company
+          </Button>
+        </>
+      }
+    />
+  );
+}

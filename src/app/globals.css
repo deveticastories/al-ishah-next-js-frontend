@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Values come from CSS variables set on <html> by src/utils/Theme.ts (Colors.ts / Sizes.ts). */
+@theme inline {
+  --color-primary: var(--c-primary);
+  --color-primary-light: var(--c-primary-light);
+  --color-dark: var(--c-dark);
+  --color-muted: var(--c-muted);
+  --color-gray-text: var(--c-gray-text);
+  --color-footer-text: var(--c-footer-text);
+  --color-border: var(--c-border);
+  --color-border-light: var(--c-border-light);
+  --color-divider: var(--c-divider);
+  --color-footer-divider: var(--c-footer-divider);
+  --color-surface: var(--c-surface);
+  --color-cta-border: var(--c-cta-border);
+  --color-input: var(--c-input);
+  --color-maroon: var(--c-maroon);
+  --color-social: var(--c-social);
+  --color-market-note: var(--c-market-note);
+  --color-dash: var(--c-dash);
+  --color-stat-red: var(--c-stat-red);
+  --color-stat-gray: var(--c-stat-gray);
+  --color-values-bg: var(--c-values-bg);
+  --color-placeholder: var(--c-placeholder);
+  --color-highlight-bg: var(--c-highlight-bg);
+  --color-muted-text: var(--c-muted-text);
+  --color-spec-value: var(--c-spec-value);
+  --color-form-bg: var(--c-form-bg);
+  --color-enquiry-heading: var(--c-enquiry-heading);
+  --color-dropdown-active: var(--c-dropdown-active);
+  --color-footer-bg: var(--c-footer-bg);
+  --color-separator: var(--c-separator);
+
+  --font-heading: var(--font-manrope);
+  --font-body: var(--font-inter);
+
+  --text-display: var(--fs-display);
+  --text-h2: var(--fs-h2);
+  --text-title: var(--fs-title);
+  --text-nav: var(--fs-nav);
+  --text-button: var(--fs-button);
+  --text-body: var(--fs-body);
+  --text-small: var(--fs-small);
+  --text-service-number: var(--fs-service-number);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #ffffff;
+  color: var(--c-dark);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  letter-spacing: -0.03em;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
