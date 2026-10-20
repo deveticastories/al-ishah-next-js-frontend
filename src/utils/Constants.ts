@@ -68,13 +68,11 @@ export type Brand = { id: string; name: string; logo: StaticImageData };
 
 export const BRANDS: Brand[] = [
   { id: "dakota", name: "Dakota", logo: Images.brandDakota },
-  { id: "kt", name: "K&T", logo: Images.brandKt },
   { id: "keves", name: "Keves", logo: Images.brandKeves },
-  { id: "bathline", name: "Bathline", logo: Images.brandBathline },
 ];
 
 // Order used by the "Connecting Trusted Brands" marquee
-export const MARQUEE_BRANDS: Brand[] = [BRANDS[1], BRANDS[0], BRANDS[2], BRANDS[3]];
+export const MARQUEE_BRANDS: Brand[] = [BRANDS[0], BRANDS[1]];
 
 export type Product = {
   id: string;

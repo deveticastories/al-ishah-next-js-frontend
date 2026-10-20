@@ -5,10 +5,8 @@ import { MARQUEE_BRANDS } from "@/utils/Constants";
 
 // Per-logo heights so each mark has the same visual weight as in the design
 const LOGO_HEIGHT: Record<string, string> = {
-  kt: "h-[115px]",
   dakota: "h-[83px]",
   keves: "h-[136px]",
-  bathline: "h-[44px]",
 };
 
 export default function BrandsMarquee() {

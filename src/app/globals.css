@@ -74,3 +74,8 @@ body {
     animation: none;
   }
 }
+
+/* Keep the page from scrolling behind an open product details dialog */
+html:has(dialog[open]) {
+  overflow: hidden;
+}

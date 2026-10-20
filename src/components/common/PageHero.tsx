@@ -1,6 +1,7 @@
 import Image, { type StaticImageData } from "next/image";
 import type { ReactNode } from "react";
 import Container from "@/components/common/Container";
+import HeroCarousel, { type HeroSlide } from "@/components/common/HeroCarousel";
 
 type PageHeroProps = {
   image: StaticImageData;
@@ -10,6 +11,8 @@ type PageHeroProps = {
   align?: "left" | "center";
   badge?: ReactNode;
   actions?: ReactNode;
+  // Extra photos rotated after `image` in an auto-sliding carousel
+  slides?: HeroSlide[];
 };
 
 // Full-bleed photo hero shared by every page (838px tall at the 1440px design width)
@@ -21,6 +24,7 @@ export default function PageHero({
   align = "left",
   badge,
   actions,
+  slides,
 }: PageHeroProps) {
   const centered = align === "center";
 
@@ -31,15 +35,19 @@ export default function PageHero({
           centered ? "items-center" : "items-end"
         }`}
       >
-        <Image
-          src={image}
-          alt={imageAlt}
-          fill
-          priority
-          placeholder="blur"
-          sizes="100vw"
-          className="object-cover object-[70%_center] lg:object-center"
-        />
+        {slides?.length ? (
+          <HeroCarousel slides={[{ image, alt: imageAlt }, ...slides]} />
+        ) : (
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            priority
+            placeholder="blur"
+            sizes="100vw"
+            className="object-cover object-[70%_center] lg:object-center"
+          />
+        )}
         {/* Keeps the copy readable when the photo is cropped on small screens */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent lg:hidden" />
 
