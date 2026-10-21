@@ -51,7 +51,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white">
       <div className="relative mx-auto flex h-[var(--header-height)] w-full max-w-[1440px] items-center justify-between px-4 sm:px-8 xl:pl-[61px] xl:pr-[64px]">
         <Link href={Routes.home} aria-label={COMPANY_NAME}>
-          <Image src={Images.logo} alt={COMPANY_NAME} className="h-[50px] w-auto" priority />
+          <Image src={Images.logo} alt={COMPANY_NAME} className="h-[76px] w-auto md:h-[88px]" priority />
         </Link>
 
         <nav className="absolute left-1/2 hidden h-full -translate-x-1/2 items-center gap-8 md:flex">

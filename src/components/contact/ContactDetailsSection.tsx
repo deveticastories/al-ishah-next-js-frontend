@@ -15,15 +15,17 @@ export default function ContactDetailsSection() {
             {CONTACT_DETAILS.map((detail) => (
               <div key={detail.title}>
                 <dt className="text-[18px] font-medium leading-6 text-black">{detail.title}</dt>
-                <dd className="mt-3 max-w-[420px] text-body leading-6 text-dark">
-                  {detail.href ? (
-                    <a href={detail.href} className="hover:text-primary">
-                      {detail.value}
-                    </a>
-                  ) : (
-                    detail.value
-                  )}
-                </dd>
+                {detail.lines.map((line) => (
+                  <dd key={line.value} className="mt-3 max-w-[420px] text-body leading-6 text-dark">
+                    {line.href ? (
+                      <a href={line.href} className="hover:text-primary">
+                        {line.value}
+                      </a>
+                    ) : (
+                      line.value
+                    )}
+                  </dd>
+                ))}
               </div>
             ))}
           </dl>

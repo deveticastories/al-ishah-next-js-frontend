@@ -13,6 +13,8 @@ type PageHeroProps = {
   actions?: ReactNode;
   // Extra photos rotated after `image` in an auto-sliding carousel
   slides?: HeroSlide[];
+  // Darkens the text side of light photos so the white copy stays readable
+  darken?: boolean;
 };
 
 // Full-bleed photo hero shared by every page (838px tall at the 1440px design width)
@@ -25,6 +27,7 @@ export default function PageHero({
   badge,
   actions,
   slides,
+  darken = false,
 }: PageHeroProps) {
   const centered = align === "center";
 
@@ -48,6 +51,7 @@ export default function PageHero({
             className="object-cover object-[70%_center] lg:object-center"
           />
         )}
+        {darken && <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/10" />}
         {/* Keeps the copy readable when the photo is cropped on small screens */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent lg:hidden" />
 

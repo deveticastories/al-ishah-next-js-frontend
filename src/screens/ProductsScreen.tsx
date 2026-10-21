@@ -43,10 +43,11 @@ async function BrandCatalogueContent({ params }: ProductsScreenProps) {
   return (
     <>
       <PageHero
-        image={Images.productsHero}
+        image={catalogue.hero.image ?? Images.productsHero}
         imageAlt={catalogue.hero.imageAlt}
         title={catalogue.hero.title}
         description={catalogue.hero.description}
+        darken={catalogue.hero.darken}
         badge={<Image src={brand.logo} alt={brand.name} className="h-[54px] w-auto" />}
       />
       <BrandAboutSection about={catalogue.about} />

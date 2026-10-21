@@ -15,7 +15,7 @@ export default function ContactScreen() {
         <PageHero
           align="center"
           image={Images.contactHero}
-          imageAlt="Black linear shower drain set into wet tiles"
+          imageAlt="Dakota drainage channel with galvanized steel grating"
           title={["Let’s Talk"]}
           description="Have A Question Or Need More Information About Our Products? We’re Here To Help. Get In Touch With Our Team For Product Enquiries, Quotations, And Support."
         />

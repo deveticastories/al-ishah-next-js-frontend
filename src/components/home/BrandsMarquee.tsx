@@ -7,6 +7,7 @@ import { MARQUEE_BRANDS } from "@/utils/Constants";
 const LOGO_HEIGHT: Record<string, string> = {
   dakota: "h-[83px]",
   keves: "h-[136px]",
+  luxwares: "h-[110px]",
 };
 
 export default function BrandsMarquee() {

@@ -24,10 +24,27 @@ export type HighlightIcon = "box" | "document" | "chat";
 
 export type BrandCatalogue = {
   brandId: string;
-  hero: { title: string[]; description: string; imageAlt: string };
-  about: { title: string[]; description: string; image?: StaticImageData; imageAlt?: string };
+  // Falls back to the shared products hero photo when a brand has no image of its own
+  hero: {
+    title: string[];
+    description: string;
+    image?: StaticImageData;
+    imageAlt: string;
+    // Set for light photos that need a dark tint behind the white hero copy
+    darken?: boolean;
+  };
+  about: {
+    title: string[];
+    description: string;
+    image?: StaticImageData;
+    imageAlt?: string;
+  };
   highlights: { title: string; description: string; icon: HighlightIcon }[];
-  catalogue: { title: string; description: string; products: CatalogueProduct[] };
+  catalogue: {
+    title: string;
+    description: string;
+    products: CatalogueProduct[];
+  };
   cta: { title: string[]; description: string };
 };
 
@@ -36,10 +53,11 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
   dakota: {
     brandId: "dakota",
     hero: {
-      title: ["Dakota Drainage &", "Installation Solutions"],
+      title: ["Dakota Drainages & Pedestals"],
       description:
         "Explore Dakota’s Range Of Drainage Channels, Catch Pits, Floor Support Systems, And Tile Levelling Products For Building And Outdoor Applications.",
-      imageAlt: "Dakota tile levelling clip on a tiled floor",
+      image: Images.dakotaHero,
+      imageAlt: "Dakota drainage channel with galvanized steel grating",
     },
     about: {
       title: ["Practical Products For Building", "& Outdoor Applications"],
@@ -54,8 +72,16 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         description: "Drainage and installation products in one range.",
         icon: "box",
       },
-      { title: "Detailed Specifications", description: "Review sizes and materials.", icon: "document" },
-      { title: "Product Enquiries", description: "Get in touch with our team.", icon: "chat" },
+      {
+        title: "Detailed Specifications",
+        description: "Review sizes and materials.",
+        icon: "document",
+      },
+      {
+        title: "Product Enquiries",
+        description: "Get in touch with our team.",
+        icon: "chat",
+      },
     ],
     catalogue: {
       title: "Explore Dakota Products",
@@ -63,9 +89,90 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         "Browse the product range by category to find available options, sizes, materials, and technical specifications.",
       products: [
         {
+          id: "arkimade-paving",
+          title: "Arkimade For Paving",
+          description:
+            "Adjustable Race Floor pedestals for raised paving tiles.",
+          image: Images.dakotaArkimadePaving,
+          specs: [
+            { label: "Application", value: "Raised paving" },
+            { label: "Height range", value: "10 mm to 1000 mm with extension" },
+          ],
+          details: {
+            origin: "Made in Italy",
+            overview:
+              "Race Floor System pedestals for raised paving tiles. The adjustable heads level the floor over uneven surfaces, with six height ranges up to 1000 mm with extension.",
+            images: [
+              {
+                src: Images.dakotaArkimadePavingInstalled,
+                alt: "Arkimade pedestals supporting raised paving tiles",
+              },
+              {
+                src: Images.dakotaArkimadePavingPedestals,
+                alt: "Arkimade paving pedestals at different heights",
+              },
+            ],
+            groups: [
+              { title: "Application", items: ["Raised paving tiles"] },
+              {
+                title: "Adjustable heights",
+                items: [
+                  "10–20 mm",
+                  "18–35 mm",
+                  "35–60 mm",
+                  "60–115 mm",
+                  "115–220 mm",
+                  "220–1000 mm (with extension)",
+                ],
+              },
+            ],
+          },
+        },
+        {
+          id: "arkimade-decking",
+          title: "Arkimade For Decking",
+          description:
+            "Adjustable Race Floor pedestals for supporting timber decking.",
+          image: Images.dakotaArkimadeDecking,
+          specs: [
+            { label: "Application", value: "Decking" },
+            { label: "Height range", value: "10 mm to 1000 mm with extension" },
+          ],
+          details: {
+            origin: "Made in Italy",
+            overview:
+              "Race Floor System pedestals for decking. They support timber decking joists above paving or ground, with six height ranges up to 1000 mm with extension.",
+            images: [
+              {
+                src: Images.dakotaArkimadeDeckingInstalled,
+                alt: "Arkimade pedestals supporting timber decking joists",
+              },
+              {
+                src: Images.dakotaArkimadeDeckingPedestals,
+                alt: "Arkimade decking pedestals",
+              },
+            ],
+            groups: [
+              { title: "Application", items: ["Timber decking"] },
+              {
+                title: "Adjustable heights",
+                items: [
+                  "10–20 mm",
+                  "18–35 mm",
+                  "35–60 mm",
+                  "60–115 mm",
+                  "115–220 mm",
+                  "220–1000 mm (with extension)",
+                ],
+              },
+            ],
+          },
+        },
+        {
           id: "outdoor-drainage-channels",
           title: "Outdoor Drainage Channels",
-          description: "Drainage channels in multiple sizes and materials for outdoor applications.",
+          description:
+            "Drainage channels in multiple sizes and materials for outdoor applications.",
           image: Images.dakotaOutdoorChannels,
           specs: [
             { label: "Materials", value: "Ductile iron, HDPE plastic" },
@@ -77,10 +184,20 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             overview:
               "Drainage channels for outdoor use, available with ductile iron or HDPE plastic gratings in three channel sizes. Certified to EN 1433.",
             images: [
-              { src: Images.dakotaOutdoorChannelsDetail, alt: "Dakota outdoor drainage channels with different gratings" },
+              {
+                src: Images.dakotaOutdoorChannelProduct,
+                alt: "Dakota outdoor drainage channel with black grating",
+              },
+              {
+                src: Images.dakotaOutdoorChannelsDetail,
+                alt: "Dakota outdoor drainage channels with different gratings",
+              },
             ],
             groups: [
-              { title: "Size (cm)", items: ["100 × 15", "100 × 20", "100 × 26"] },
+              {
+                title: "Size (cm)",
+                items: ["100 × 15", "100 × 20", "100 × 26"],
+              },
               { title: "Class of loading", items: ["C-250", "D-400"] },
               { title: "Materials", items: ["Ductile iron", "HDPE plastic"] },
               { title: "Certification", items: ["EN 1433 certified"] },
@@ -90,10 +207,14 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         {
           id: "drainage-channels-grates",
           title: "Drainage Channels & Grates",
-          description: "Channel options featuring different grate materials and designs.",
+          description:
+            "Channel options featuring different grate materials and designs.",
           image: Images.dakotaChannelsGrates,
           specs: [
-            { label: "Materials", value: "Stainless steel, galvanized steel, plastic" },
+            {
+              label: "Materials",
+              value: "Stainless steel, galvanized steel, plastic",
+            },
             { label: "Sizes", value: "100 × 10, 100 × 15, 100 × 20 cm" },
             { label: "Loading classes", value: "A-125" },
           ],
@@ -102,12 +223,21 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             overview:
               "Drainage channels with stainless steel, galvanized steel or plastic grates in wave and slot designs, rated for A-125 loading.",
             images: [
-              { src: Images.dakotaChannelsGratesDetail, alt: "Dakota drainage channels with steel grates" },
+              {
+                src: Images.dakotaChannelsGratesDetail,
+                alt: "Dakota drainage channels with steel grates",
+              },
             ],
             groups: [
-              { title: "Size (cm)", items: ["100 × 10", "100 × 15", "100 × 20"] },
+              {
+                title: "Size (cm)",
+                items: ["100 × 10", "100 × 15", "100 × 20"],
+              },
               { title: "Class of loading", items: ["A-125"] },
-              { title: "Grate materials", items: ["Stainless steel", "Galvanized steel", "Plastic"] },
+              {
+                title: "Grate materials",
+                items: ["Stainless steel", "Galvanized steel", "Plastic"],
+              },
             ],
           },
         },
@@ -123,12 +253,23 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
           ],
           details: {
             origin: "Made in Italy",
-            overview: "PVC plastic drainage channels supplied with PVC grating, rated for A-125 loading.",
+            overview:
+              "PVC plastic drainage channels supplied with PVC grating, rated for A-125 loading.",
             images: [
-              { src: Images.dakotaPlasticChannelsDetail, alt: "Dakota plastic drainage channels with PVC grating" },
+              {
+                src: Images.dakotaPlasticChannelProduct,
+                alt: "Dakota plastic drainage channel with white PVC grating",
+              },
+              {
+                src: Images.dakotaPlasticChannelsDetail,
+                alt: "Dakota plastic drainage channels with PVC grating",
+              },
             ],
             groups: [
-              { title: "Size (cm)", items: ["100 × 10", "100 × 15", "100 × 20"] },
+              {
+                title: "Size (cm)",
+                items: ["100 × 10", "100 × 15", "100 × 20"],
+              },
               { title: "Class of loading", items: ["A-125"] },
               { title: "Materials", items: ["PVC grating", "PVC plastic"] },
             ],
@@ -137,64 +278,57 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         {
           id: "pvc-catch-pits",
           title: "PVC Catch Pits & Gully Gratings",
-          description: "Catch pit and grating components in several square sizes",
+          description:
+            "Catch pit and grating components in several square sizes",
           image: Images.dakotaCatchPits,
           specs: [
             { label: "Materials", value: "PVC" },
-            { label: "Sizes", value: "20 × 20, 30 × 30, 40 × 40, 55 × 55, 70 × 70 cm" },
+            {
+              label: "Sizes",
+              value: "20 × 20, 30 × 30, 40 × 40, 55 × 55, 70 × 70 cm",
+            },
             { label: "Loading classes", value: "A-125" },
           ],
           details: {
             origin: "Made in Italy",
-            overview: "PVC catch pits with matching gully gratings in five square sizes, rated for A-125 loading.",
-            images: [{ src: Images.dakotaCatchPitsDetail, alt: "Dakota PVC catch pit, cover and gully grating" }],
+            overview:
+              "PVC catch pits with matching gully gratings in five square sizes, rated for A-125 loading.",
+            images: [
+              {
+                src: Images.dakotaCatchPitsDetail,
+                alt: "Dakota PVC catch pit, cover and gully grating",
+              },
+            ],
             groups: [
-              { title: "Size (cm)", items: ["20 × 20", "30 × 30", "40 × 40", "55 × 55", "70 × 70"] },
+              {
+                title: "Size (cm)",
+                items: ["20 × 20", "30 × 30", "40 × 40", "55 × 55", "70 × 70"],
+              },
               { title: "Class of loading", items: ["A-125"] },
               { title: "Material", items: ["PVC"] },
             ],
           },
         },
         {
-          id: "race-floor-system",
-          title: "Race Floor System — Arkimade",
-          description: "Adjustable support systems featured for both paving and decking applications.",
-          image: Images.dakotaRaceFloor,
-          specs: [
-            { label: "Applications", value: "Paving, decking" },
-            {
-              label: "Height ranges",
-              value: "10–20 mm to 220–1000 mm with extension, across six listed ranges",
-            },
-          ],
-          details: {
-            origin: "Made in Italy",
-            overview:
-              "Arkimade adjustable pedestals for raised paving and decking, available in six height ranges up to 1000 mm with extension.",
-            images: [
-              { src: Images.dakotaRaceFloorPaving, alt: "Arkimade pedestals supporting raised paving tiles" },
-              { src: Images.dakotaRaceFloorDecking, alt: "Arkimade pedestals supporting timber decking" },
-            ],
-            groups: [
-              { title: "Applications", items: ["Arkimade for paving", "Arkimade for decking"] },
-              {
-                title: "Adjustable heights",
-                items: ["10–20 mm", "18–35 mm", "35–60 mm", "60–115 mm", "115–220 mm", "220–1000 mm (with extension)"],
-              },
-            ],
-          },
-        },
-        {
           id: "tile-levelling-system",
           title: "Tile Levelling System",
-          description: "Tile installation components presented in the Dakota catalogue.",
+          description:
+            "Tile installation components presented in the Dakota catalogue.",
           image: Images.dakotaTileLevelling,
           specs: [{ label: "Components", value: "Wedges, clips, cylinders" }],
           details: {
             origin: "Made in Italy",
-            overview: "Tile levelling components used together during tile installation for an even, level finish.",
-            images: [{ src: Images.dakotaTileLevellingDetail, alt: "Dakota tile levelling clips, cylinders and wedges" }],
-            groups: [{ title: "Components", items: ["Wedges", "Clips", "Cylinders"] }],
+            overview:
+              "Tile levelling components used together during tile installation for an even, level finish.",
+            images: [
+              {
+                src: Images.dakotaTileLevellingDetail,
+                alt: "Dakota tile levelling clips, cylinders and wedges",
+              },
+            ],
+            groups: [
+              { title: "Components", items: ["Wedges", "Clips", "Cylinders"] },
+            ],
           },
         },
       ],
@@ -216,14 +350,26 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
     about: {
       title: ["Durable Drains For", "Roofs & Terraces"],
       description:
-        "Keves' product range featured in our catalogue includes 4-inch scupper and dome drains made with a cast iron body and aluminium grill. Explore the available products and their specifications to identify the right option for your project.",
+        "Keves' product range featured in our catalogue includes 3-inch and 4-inch scupper and dome drains made with a cast iron body and aluminium grill. Explore the available products and their specifications to identify the right option for your project.",
       image: Images.kevesBrandAbout,
       imageAlt: "Keves dome drain and scupper drain",
     },
     highlights: [
-      { title: "Roof Drainage Range", description: "Scupper and dome drains in one range.", icon: "box" },
-      { title: "Detailed Specifications", description: "Review sizes and materials.", icon: "document" },
-      { title: "Product Enquiries", description: "Get in touch with our team.", icon: "chat" },
+      {
+        title: "Roof Drainage Range",
+        description: "Scupper and dome drains in one range.",
+        icon: "box",
+      },
+      {
+        title: "Detailed Specifications",
+        description: "Review sizes and materials.",
+        icon: "document",
+      },
+      {
+        title: "Product Enquiries",
+        description: "Get in touch with our team.",
+        icon: "chat",
+      },
     ],
     catalogue: {
       title: "Explore Keves Products",
@@ -232,39 +378,55 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
       products: [
         {
           id: "scupper-drain",
-          title: "Scupper Drain 4″",
-          description: "Scupper drain with a cast iron body and aluminium grill.",
+          title: "Scupper Drain",
+          description:
+            "Scupper drain with a cast iron body and aluminium grill.",
           image: Images.kevesScupperDrain,
           specs: [
-            { label: "Size", value: "4″" },
+            { label: "Sizes", value: "3″, 4″" },
             { label: "Materials", value: "Cast iron body, aluminium grill" },
           ],
           details: {
             origin: "Made in India",
-            overview: "A 4-inch scupper drain with a cast iron body and an aluminium grill.",
-            images: [{ src: Images.kevesScupperDrain, alt: "Keves 4 inch scupper drain" }],
+            overview:
+              "A scupper drain available in 3-inch and 4-inch sizes, with a cast iron body and an aluminium grill.",
+            images: [
+              {
+                src: Images.kevesScupperDrain,
+                alt: "Keves scupper drain",
+              },
+            ],
             groups: [
-              { title: "Size", items: ["4″"] },
-              { title: "Materials", items: ["Cast iron body", "Aluminium grill"] },
+              { title: "Sizes", items: ["3″", "4″"] },
+              {
+                title: "Materials",
+                items: ["Cast iron body", "Aluminium grill"],
+              },
             ],
           },
         },
         {
           id: "dome-drain",
-          title: "Dome Drain 4″",
+          title: "Dome Drain",
           description: "Dome drain with a cast iron body and aluminium grill.",
           image: Images.kevesDomeDrain,
           specs: [
-            { label: "Size", value: "4″" },
+            { label: "Sizes", value: "3″, 4″" },
             { label: "Materials", value: "Cast iron body, aluminium grill" },
           ],
           details: {
             origin: "Made in India",
-            overview: "A 4-inch dome drain with a cast iron body and an aluminium dome grill.",
-            images: [{ src: Images.kevesDomeDrain, alt: "Keves 4 inch dome drain" }],
+            overview:
+              "A dome drain available in 3-inch and 4-inch sizes, with a cast iron body and an aluminium dome grill.",
+            images: [
+              { src: Images.kevesDomeDrain, alt: "Keves dome drain" },
+            ],
             groups: [
-              { title: "Size", items: ["4″"] },
-              { title: "Materials", items: ["Cast iron body", "Aluminium grill"] },
+              { title: "Sizes", items: ["3″", "4″"] },
+              {
+                title: "Materials",
+                items: ["Cast iron body", "Aluminium grill"],
+              },
             ],
           },
         },
@@ -272,6 +434,148 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
     },
     cta: {
       title: ["Looking For A Keves", "Product?"],
+      description:
+        "Tell us which product or specification you need. Contact Al Ihsas General Trading LLC for product enquiries and availability.",
+    },
+  },
+  luxwares: {
+    brandId: "luxwares",
+    hero: {
+      title: ["LuxWares Check &", "Anti Flooding Valves"],
+      description:
+        "Explore LuxWares Waste Water Check Valves And Locked Anti Flooding Valves By Torun Plastik, Built To Stop Sewer Backflow Into Buildings.",
+      image: Images.luxwaresHero,
+      imageAlt: "LuxWares locked anti flooding valve with water balance system",
+      darken: true,
+    },
+    about: {
+      title: ["Backflow Protection For", "Waste Water Lines"],
+      description:
+        "LuxWares, manufactured by Torun Plastik, offers PP check valves and locked anti flooding valves for waste water systems. They block sewer recoil, keep out pests such as mice and insects, and prevent sewage odours, with a removable top cover for easy cleaning. Explore the available products and their specifications to identify the right option for your project.",
+      image: Images.luxwaresBrandAbout,
+      imageAlt:
+        "LuxWares locked anti flooding valves with stainless steel and plastic flaps",
+    },
+    highlights: [
+      {
+        title: "Backflow Prevention Range",
+        description: "Check and anti flooding valves in one range.",
+        icon: "box",
+      },
+      {
+        title: "Detailed Specifications",
+        description: "Review sizes and materials.",
+        icon: "document",
+      },
+      {
+        title: "Product Enquiries",
+        description: "Get in touch with our team.",
+        icon: "chat",
+      },
+    ],
+    catalogue: {
+      title: "Explore LuxWares Products",
+      description:
+        "Browse the product range to find available options, sizes, materials, and technical specifications.",
+      products: [
+        {
+          id: "plastic-check-valve",
+          title: "75 mm Plastic Check Valve",
+          description:
+            "Waste water check valve that stops sewer backflow, pests and odours.",
+          image: Images.luxwaresCheckValve,
+          specs: [
+            { label: "Product code", value: "TP 1034" },
+            { label: "Size", value: "Ø75 mm" },
+            { label: "Material", value: "PP" },
+          ],
+          details: {
+            origin: "Made in Turkey",
+            overview:
+              "A 75 mm PP waste water check valve that blocks sewer and infrastructure recoil, keeps mice and insects out of the building and prevents sewage odours. The top cover removes for easy, practical cleaning.",
+            images: [
+              {
+                src: Images.luxwaresCheckValve,
+                alt: "LuxWares 75 mm plastic check valve",
+              },
+              {
+                src: Images.luxwaresCheckValveDrawing,
+                alt: "Technical drawing of the 75 mm check valve",
+              },
+            ],
+            groups: [
+              {
+                title: "Product",
+                items: ["Code: TP 1034", "Material: PP", "Weight: 470 g"],
+              },
+              {
+                title: "Dimensions",
+                items: [
+                  "Inlet / outlet: Ø75 mm",
+                  "Length: 240 mm",
+                  "Height: 156 mm",
+                ],
+              },
+              {
+                title: "Packaging",
+                items: [
+                  "Inner carton quantity: 18",
+                  "Package size: 440 × 540 × 410 mm",
+                  "Package weight: 10 kg",
+                ],
+              },
+              {
+                title: "Practice areas",
+                items: [
+                  "Buildings and sites",
+                  "Sports complexes, villas and mansions",
+                  "Factory buildings",
+                  "Building and related fields",
+                ],
+              },
+            ],
+          },
+        },
+        {
+          id: "locked-anti-flooding-valve",
+          title: "Locked Anti Flooding Valve",
+          description:
+            "Lockable backflow valve with a built-in water balance level.",
+          image: Images.luxwaresAntiFloodingValve,
+          specs: [
+            { label: "Flap options", value: "Stainless steel, plastic" },
+            { label: "Feature", value: "Water balance system" },
+          ],
+          details: {
+            origin: "Made in Turkey",
+            overview:
+              "A locked anti flooding valve that keeps sewer water from flowing back into the building. A built-in water balance system (spirit level) helps set the valve level during installation, and it is available with a stainless steel or plastic flap.",
+            images: [
+              {
+                src: Images.luxwaresAntiFloodingValveBalance,
+                alt: "LuxWares locked anti flooding valve with water balance system",
+              },
+              {
+                src: Images.luxwaresAntiFloodingValveFlaps,
+                alt: "Anti flooding valves with stainless steel and plastic flaps",
+              },
+            ],
+            groups: [
+              {
+                title: "Flap options",
+                items: ["Stainless steel flap", "Plastic flap"],
+              },
+              {
+                title: "Features",
+                items: ["Lockable cover", "Water balance system"],
+              },
+            ],
+          },
+        },
+      ],
+    },
+    cta: {
+      title: ["Looking For A LuxWares", "Product?"],
       description:
         "Tell us which product or specification you need. Contact Al Ihsas General Trading LLC for product enquiries and availability.",
     },

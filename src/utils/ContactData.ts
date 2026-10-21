@@ -1,13 +1,22 @@
 import { CONTACT_INFO } from "./Constants";
 
+export type ContactLine = { value: string; href?: string };
+
 // Address and hours are still placeholder copy in the Figma design
-export const CONTACT_DETAILS = [
+export const CONTACT_DETAILS: { title: string; lines: ContactLine[] }[] = [
   {
     title: "Address",
-    value:
-      "Lorem ipsum dolor sit amet consectetur. Consequat quis et consectetur sit. Quam nunc elit ullamcorper ultricies.",
+    lines: [
+      {
+        value:
+          "Lorem ipsum dolor sit amet consectetur. Consequat quis et consectetur sit. Quam nunc elit ullamcorper ultricies.",
+      },
+    ],
   },
-  { title: "Phone", value: CONTACT_INFO.phone, href: `tel:${CONTACT_INFO.phone.replace(/\s/g, "")}` },
-  { title: "Email", value: CONTACT_INFO.email, href: `mailto:${CONTACT_INFO.email}` },
-  { title: "Business Hours", value: "[Working days and hours]" },
+  {
+    title: "Phone",
+    lines: [{ value: CONTACT_INFO.phone, href: `tel:${CONTACT_INFO.phone.replace(/\s/g, "")}` }],
+  },
+  { title: "Email", lines: CONTACT_INFO.emails.map((email) => ({ value: email, href: `mailto:${email}` })) },
+  { title: "Business Hours", lines: [{ value: "[Working days and hours]" }] },
 ];

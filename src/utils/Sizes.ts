@@ -2,7 +2,7 @@
 export const Sizes = {
   designWidth: 1440,
   containerPadding: 62,
-  headerHeight: 99,
+  headerHeight: 108,
   heroHeight: 838,
   radius: 4,
   inputRadius: 6,

@@ -15,22 +15,28 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const CONTACT_INFO = {
-  email: "arshakir123@gmail.com",
+  emails: ["info@alihsastrading.com", "sales@ihsastrading.com"],
   phone: "+971 54401 8199",
   website: "alihsastrading.com",
 } as const;
 
-export type Feature = { title: string; description: string; image: StaticImageData };
+export type Feature = {
+  title: string;
+  description: string;
+  image: StaticImageData;
+};
 
 export const FEATURES: Feature[] = [
   {
     title: "Diverse Product Portfolio",
-    description: "A diverse range of registered-brand products for every business need.",
+    description:
+      "A diverse range of registered-brand products for every business need.",
     image: Images.featurePortfolio,
   },
   {
     title: "International Sourcing",
-    description: "Products sourced and manufactured across Asia, the Middle East, and Europe.",
+    description:
+      "Products sourced and manufactured across Asia, the Middle East, and Europe.",
     image: Images.featureSourcing,
   },
   {
@@ -69,10 +75,11 @@ export type Brand = { id: string; name: string; logo: StaticImageData };
 export const BRANDS: Brand[] = [
   { id: "dakota", name: "Dakota", logo: Images.brandDakota },
   { id: "keves", name: "Keves", logo: Images.brandKeves },
+  { id: "luxwares", name: "LuxWares", logo: Images.brandLuxwares },
 ];
 
 // Order used by the "Connecting Trusted Brands" marquee
-export const MARQUEE_BRANDS: Brand[] = [BRANDS[0], BRANDS[1]];
+export const MARQUEE_BRANDS: Brand[] = [BRANDS[0], BRANDS[1], BRANDS[2]];
 
 export type Product = {
   id: string;
@@ -82,35 +89,60 @@ export type Product = {
   image: StaticImageData;
 };
 
+// Arkimade paving and decking are the main Dakota products, so they lead the home page grid
 export const PRODUCTS: Product[] = [
+  {
+    id: "arkimade-paving",
+    brandId: "dakota",
+    title: "Arkimade For Paving",
+    description: "Adjustable Race Floor pedestals for raised paving tiles.",
+    image: Images.dakotaArkimadePaving,
+  },
+  {
+    id: "arkimade-decking",
+    brandId: "dakota",
+    title: "Arkimade For Decking",
+    description: "Adjustable Race Floor pedestals for timber decking.",
+    image: Images.dakotaArkimadeDecking,
+  },
   {
     id: "drainage-channel",
     brandId: "dakota",
-    title: "Drainage Channel For Outdoor Dakota",
+    title: "Outdoor Drainage Channel System",
     description: "Helps prevent wastewater backflow in drainage systems.",
     image: Images.drainageChannel,
   },
   {
-    id: "catch-pit",
-    brandId: "dakota",
-    title: "Pvc Catch Pit And Gully Grating",
+    id: "plastic-check-valve",
+    brandId: "luxwares",
+    title: "75 mm Plastic Check Valve",
     description:
-      "Collects surface water and filters debris to ensure efficient drainage and prevent blockages.",
-    image: Images.catchPit,
+      "Stops sewer backflow, pests and odours from entering the building.",
+    image: Images.luxwaresCheckValve,
   },
   {
-    id: "race-floor",
-    brandId: "dakota",
-    title: "Race Floor System",
-    description: "Arkimade for Paving",
-    image: Images.raceFloor,
+    id: "locked-anti-flooding-valve",
+    brandId: "luxwares",
+    title: "Locked Anti Flooding Valve",
+    description:
+      "Lockable backflow valve with stainless steel or plastic flap.",
+    image: Images.luxwaresAntiFloodingValve,
   },
 ];
 
 export const MARKETS = [
-  { region: "Asia", description: "A diverse range of products from regional manufacturers." },
-  { region: "Middle East", description: "Products from suppliers across the region" },
-  { region: "Europe", description: "Access to products from European sources." },
+  {
+    region: "Asia",
+    description: "A diverse range of products from regional manufacturers.",
+  },
+  {
+    region: "Middle East",
+    description: "Products from suppliers across the region",
+  },
+  {
+    region: "Europe",
+    description: "Access to products from European sources.",
+  },
 ];
 
 // "Quick Links" in the footer lists the main pages except the one being viewed

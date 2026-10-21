@@ -21,14 +21,15 @@ export default function WhyChooseSection() {
           />
           <div className="relative grid grid-cols-2 gap-[18px]">
             <ImagePlaceholder
-              image={Images.aboutQuality}
-              alt="Industrial pipework and valves mounted on a brick wall"
+              image={Images.aboutDeckingInstallation}
+              alt="Timber decking installed on Arkimade pedestals in a garden"
               className="h-[360px] w-full lg:h-[513px]"
             />
+            {/* Product shot on white, so a border keeps the slot's edge visible */}
             <ImagePlaceholder
-              image={Images.aboutPartnership}
-              alt="Business partners shaking hands"
-              className="h-[360px] w-full lg:h-[513px]"
+              image={Images.aboutDeckingPedestal}
+              alt="Dakota Arkimade adjustable decking pedestal"
+              className="h-[360px] w-full border border-border lg:h-[513px]"
             />
           </div>
         </div>
