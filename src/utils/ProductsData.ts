@@ -24,6 +24,8 @@ export type HighlightIcon = "box" | "document" | "chat";
 
 export type BrandCatalogue = {
   brandId: string;
+  // Search engine description and keywords for the brand page
+  seo?: { description: string; keywords: string[] };
   // Falls back to the shared products hero photo when a brand has no image of its own
   hero: {
     title: string[];
@@ -52,6 +54,15 @@ export type BrandCatalogue = {
 export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
   dakota: {
     brandId: "dakota",
+    seo: {
+      description:
+        "Al Ihsas General Trading LLC is a supplier for adjustable pedestals, raised floor systems and grating channels in the UAE, distributing Dakota drainage and floor support products.",
+      keywords: [
+        "supplier for adjustable pedestals in uae",
+        "supplier raised floor in uae",
+        "supplier for grating channel in UAE",
+      ],
+    },
     hero: {
       title: ["Dakota Drainages & Pedestals"],
       description:
@@ -62,7 +73,7 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
     about: {
       title: ["Practical Products For Building", "& Outdoor Applications"],
       description:
-        "Dakota's product range featured in our catalogue includes drainage systems and installation accessories in different designs, materials, and sizes. From outdoor drainage channels to adjustable floor support systems and tile levelling components, explore the available products and their specifications to identify the right option for your project.",
+        "Dakota's product range featured in our catalogue includes drainage systems and installation accessories in different designs, materials, and sizes. From outdoor drainage channels to adjustable floor support systems and tile levelling components, explore the available products and their specifications to identify the right option for your project. As a supplier for adjustable pedestals, raised floor systems and grating channels in the UAE, we help you source the right Dakota products for your site.",
       image: Images.dakotaBrandAbout,
       imageAlt: "Modern home with landscaped outdoor space",
     },

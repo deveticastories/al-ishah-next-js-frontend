@@ -10,7 +10,12 @@ export function generateStaticParams() {
 export async function generateMetadata(props: PageProps<"/products/[brand]">): Promise<Metadata> {
   const { brand: brandId } = await props.params;
   const brand = BRANDS.find((item) => item.id === brandId);
-  return { title: `${brand?.name ?? "Products"} Products | Al Ihsas General Trading LLC` };
+  const seo = BRAND_CATALOGUES[brandId]?.seo;
+  return {
+    title: `${brand?.name ?? "Products"} Products | Al Ihsas General Trading LLC`,
+    description: seo?.description,
+    keywords: seo?.keywords,
+  };
 }
 
 // The brand is read inside ProductsScreen's Suspense boundary so the header and footer stay in the shared App Shell

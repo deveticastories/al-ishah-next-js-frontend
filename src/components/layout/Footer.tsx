@@ -36,7 +36,7 @@ export default function Footer({ currentHref, className = "border-t border-foote
   ];
   const contactItems = [
     ...CONTACT_INFO.emails.map((email) => ({ Icon: MailIcon, label: email, href: `mailto:${email}` })),
-    { Icon: PhoneIcon, label: CONTACT_INFO.phone, href: `tel:${CONTACT_INFO.phone.replace(/\s/g, "")}` },
+    ...CONTACT_INFO.phones.map((phone) => ({ Icon: PhoneIcon, label: phone, href: `tel:${phone.replace(/\s/g, "")}` })),
     { Icon: GlobeIcon, label: CONTACT_INFO.website, href: `https://${CONTACT_INFO.website}` },
   ];
 

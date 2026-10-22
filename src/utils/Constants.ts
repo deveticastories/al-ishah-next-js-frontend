@@ -16,7 +16,7 @@ export const NAV_LINKS: NavLink[] = [
 
 export const CONTACT_INFO = {
   emails: ["info@alihsastrading.com", "sales@ihsastrading.com"],
-  phone: "+971 54401 8199",
+  phones: ["+971 54401 8199", "+974 7703 1406"],
   website: "alihsastrading.com",
 } as const;
 
@@ -111,6 +111,20 @@ export const PRODUCTS: Product[] = [
     title: "Outdoor Drainage Channel System",
     description: "Helps prevent wastewater backflow in drainage systems.",
     image: Images.drainageChannel,
+  },
+  {
+    id: "scupper-drain",
+    brandId: "keves",
+    title: "Scupper Drain",
+    description: "Cast iron scupper drain with aluminium grill, in 3″ and 4″.",
+    image: Images.kevesScupperDrain,
+  },
+  {
+    id: "dome-drain",
+    brandId: "keves",
+    title: "Dome Drain",
+    description: "Cast iron dome drain with aluminium grill, in 3″ and 4″.",
+    image: Images.kevesDomeDrain,
   },
   {
     id: "plastic-check-valve",

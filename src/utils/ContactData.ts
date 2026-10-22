@@ -15,7 +15,7 @@ export const CONTACT_DETAILS: { title: string; lines: ContactLine[] }[] = [
   },
   {
     title: "Phone",
-    lines: [{ value: CONTACT_INFO.phone, href: `tel:${CONTACT_INFO.phone.replace(/\s/g, "")}` }],
+    lines: CONTACT_INFO.phones.map((phone) => ({ value: phone, href: `tel:${phone.replace(/\s/g, "")}` })),
   },
   { title: "Email", lines: CONTACT_INFO.emails.map((email) => ({ value: email, href: `mailto:${email}` })) },
   { title: "Business Hours", lines: [{ value: "[Working days and hours]" }] },
