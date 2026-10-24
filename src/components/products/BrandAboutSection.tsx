@@ -15,6 +15,7 @@ export default function BrandAboutSection({ about }: BrandAboutSectionProps) {
         <ImagePlaceholder
           image={about.image}
           alt={about.imageAlt}
+          fit={about.imageFit}
           className="h-[360px] w-full lg:h-[513px]"
         />
 

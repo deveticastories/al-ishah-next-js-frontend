@@ -40,6 +40,8 @@ export type BrandCatalogue = {
     description: string;
     image?: StaticImageData;
     imageAlt?: string;
+    // Wide product shots on white show whole instead of being cropped to the slot
+    imageFit?: "cover" | "contain";
   };
   highlights: { title: string; description: string; icon: HighlightIcon }[];
   catalogue: {
@@ -364,6 +366,7 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         "Keves' product range featured in our catalogue includes 3-inch and 4-inch scupper and dome drains made with a cast iron body and aluminium grill. Explore the available products and their specifications to identify the right option for your project.",
       image: Images.kevesBrandAbout,
       imageAlt: "Keves dome drain and scupper drain",
+      imageFit: "contain",
     },
     highlights: [
       {

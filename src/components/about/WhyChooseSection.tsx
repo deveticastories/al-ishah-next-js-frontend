@@ -25,11 +25,10 @@ export default function WhyChooseSection() {
               alt="Timber decking installed on Arkimade pedestals in a garden"
               className="h-[360px] w-full lg:h-[513px]"
             />
-            {/* Product shot on white, so a border keeps the slot's edge visible */}
             <ImagePlaceholder
               image={Images.aboutDeckingPedestal}
               alt="Dakota Arkimade adjustable decking pedestal"
-              className="h-[360px] w-full border border-border lg:h-[513px]"
+              className="h-[360px] w-full lg:h-[513px]"
             />
           </div>
         </div>
