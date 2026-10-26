@@ -3,16 +3,19 @@
 import Image from "next/image";
 import { useState, type Ref } from "react";
 import Button from "@/components/common/Button";
+import OriginBadge from "@/components/common/OriginBadge";
 import { CloseIcon } from "@/components/icons/Icons";
+import type { Country } from "@/utils/Constants";
 import type { CatalogueProduct } from "@/utils/ProductsData";
 import { Routes } from "@/utils/Routes";
 
 type ProductDetailsDialogProps = {
   ref: Ref<HTMLDialogElement>;
   product: CatalogueProduct;
+  country: Country;
 };
 
-export default function ProductDetailsDialog({ ref, product }: ProductDetailsDialogProps) {
+export default function ProductDetailsDialog({ ref, product, country }: ProductDetailsDialogProps) {
   const { details } = product;
   const [activeImage, setActiveImage] = useState(0);
   const image = details.images[activeImage];
@@ -70,10 +73,10 @@ export default function ProductDetailsDialog({ ref, product }: ProductDetailsDia
         </div>
 
         <div className="lg:pt-6">
-          <p className="font-body text-body leading-6 text-primary">{details.origin}</p>
+          <OriginBadge country={country} />
           <h3
             id={`${product.id}-title`}
-            className="mt-2 pr-10 font-heading text-title font-medium tracking-[-0.03em] text-black"
+            className="mt-3 pr-10 font-heading text-title font-medium tracking-[-0.03em] text-black"
           >
             {product.title}
           </h3>

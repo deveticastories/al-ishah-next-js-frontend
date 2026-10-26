@@ -1,13 +1,15 @@
 import Container from "@/components/common/Container";
 import SectionHeading from "@/components/common/SectionHeading";
 import CatalogueCard from "@/components/products/CatalogueCard";
+import type { Country } from "@/utils/Constants";
 import type { BrandCatalogue } from "@/utils/ProductsData";
 
 type CatalogueSectionProps = {
   catalogue: BrandCatalogue["catalogue"];
+  country: Country;
 };
 
-export default function CatalogueSection({ catalogue }: CatalogueSectionProps) {
+export default function CatalogueSection({ catalogue, country }: CatalogueSectionProps) {
   return (
     <section className="pt-20 lg:pt-[119px]">
       <Container>
@@ -19,7 +21,7 @@ export default function CatalogueSection({ catalogue }: CatalogueSectionProps) {
 
         <div className="mt-10 grid gap-[30px] sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-[31px]">
           {catalogue.products.map((product) => (
-            <CatalogueCard key={product.id} product={product} />
+            <CatalogueCard key={product.id} product={product} country={country} />
           ))}
         </div>
       </Container>

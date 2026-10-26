@@ -2,14 +2,17 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import OriginBadge from "@/components/common/OriginBadge";
 import ProductDetailsDialog from "@/components/products/ProductDetailsDialog";
+import type { Country } from "@/utils/Constants";
 import type { CatalogueProduct } from "@/utils/ProductsData";
 
 type CatalogueCardProps = {
   product: CatalogueProduct;
+  country: Country;
 };
 
-export default function CatalogueCard({ product }: CatalogueCardProps) {
+export default function CatalogueCard({ product, country }: CatalogueCardProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   return (
@@ -20,7 +23,7 @@ export default function CatalogueCard({ product }: CatalogueCardProps) {
         aria-haspopup="dialog"
         className="block h-full w-full cursor-pointer rounded border border-border p-[14px] pb-5 text-left transition-colors hover:border-primary-light focus-visible:border-primary focus-visible:outline-none"
       >
-        <div className="bg-surface">
+        <div className="relative bg-surface">
           <Image
             src={product.image}
             alt={product.title}
@@ -28,6 +31,7 @@ export default function CatalogueCard({ product }: CatalogueCardProps) {
             sizes="(min-width: 1024px) 388px, 100vw"
             className="aspect-[388/367] h-auto w-full object-cover"
           />
+          <OriginBadge country={country} className="absolute left-3 top-3" />
         </div>
 
         <h3 className="mt-4 font-heading text-title font-medium tracking-[-0.03em] text-black">
@@ -45,7 +49,7 @@ export default function CatalogueCard({ product }: CatalogueCardProps) {
         </dl>
       </button>
 
-      <ProductDetailsDialog ref={dialogRef} product={product} />
+      <ProductDetailsDialog ref={dialogRef} product={product} country={country} />
     </article>
   );
 }

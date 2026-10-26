@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Button from "@/components/common/Button";
 import CtaBanner from "@/components/common/CtaBanner";
+import OriginBadge from "@/components/common/OriginBadge";
 import PageHero from "@/components/common/PageHero";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
@@ -48,11 +49,16 @@ async function BrandCatalogueContent({ params }: ProductsScreenProps) {
         title={catalogue.hero.title}
         description={catalogue.hero.description}
         darken={catalogue.hero.darken}
-        badge={<Image src={brand.logo} alt={brand.name} className="h-[54px] w-auto" />}
+        badge={
+          <div className="flex flex-wrap items-center gap-4">
+            <Image src={brand.logo} alt={brand.name} className="h-[54px] w-auto" />
+            <OriginBadge country={brand.country} tone="dark" />
+          </div>
+        }
       />
       <BrandAboutSection about={catalogue.about} />
       <BrandHighlights highlights={catalogue.highlights} />
-      <CatalogueSection catalogue={catalogue.catalogue} />
+      <CatalogueSection catalogue={catalogue.catalogue} country={brand.country} />
       <CtaBanner
         className="pb-[72px] pt-20 lg:pt-[119px]"
         label="Need Help Finding A Product?"

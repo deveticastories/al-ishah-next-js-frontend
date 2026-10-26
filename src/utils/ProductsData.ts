@@ -5,7 +5,6 @@ export type ProductSpec = { label: string; value: string };
 
 // Full product sheet shown when a catalogue card is clicked (content from the Al Ihsas product catalogue PDF)
 export type ProductDetails = {
-  origin: string;
   overview: string;
   images: { src: StaticImageData; alt: string }[];
   groups: { title: string; items: string[] }[];
@@ -112,7 +111,6 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             { label: "Height range", value: "10 mm to 1000 mm with extension" },
           ],
           details: {
-            origin: "Made in Italy",
             overview:
               "Race Floor System pedestals for raised paving tiles. The adjustable heads level the floor over uneven surfaces, with six height ranges up to 1000 mm with extension.",
             images: [
@@ -152,7 +150,6 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             { label: "Height range", value: "10 mm to 1000 mm with extension" },
           ],
           details: {
-            origin: "Made in Italy",
             overview:
               "Race Floor System pedestals for decking. They support timber decking joists above paving or ground, with six height ranges up to 1000 mm with extension.",
             images: [
@@ -193,7 +190,6 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             { label: "Loading classes", value: "C-250, D-400" },
           ],
           details: {
-            origin: "Made in Italy",
             overview:
               "Drainage channels for outdoor use, available with ductile iron or HDPE plastic gratings in three channel sizes. Certified to EN 1433.",
             images: [
@@ -219,7 +215,8 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         },
         {
           id: "drainage-channels-grates",
-          title: "Drainage Channels & Grates",
+          title:
+            "Drainage channels for Indoors and outdoors with heavy loading capacity",
           description:
             "Channel options featuring different grate materials and designs.",
           image: Images.dakotaChannelsGrates,
@@ -232,7 +229,6 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             { label: "Loading classes", value: "A-125" },
           ],
           details: {
-            origin: "Made in Italy",
             overview:
               "Drainage channels with stainless steel, galvanized steel or plastic grates in wave and slot designs, rated for A-125 loading.",
             images: [
@@ -256,7 +252,7 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         },
         {
           id: "plastic-drainage-channels",
-          title: "Plastic Drainage Channels",
+          title: "PVC drainage channels",
           description: "Plastic drainage channel options with PVC grating",
           image: Images.dakotaPlasticChannels,
           specs: [
@@ -265,7 +261,6 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             { label: "Loading classes", value: "A-125" },
           ],
           details: {
-            origin: "Made in Italy",
             overview:
               "PVC plastic drainage channels supplied with PVC grating, rated for A-125 loading.",
             images: [
@@ -303,7 +298,6 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             { label: "Loading classes", value: "A-125" },
           ],
           details: {
-            origin: "Made in Italy",
             overview:
               "PVC catch pits with matching gully gratings in five square sizes, rated for A-125 loading.",
             images: [
@@ -324,13 +318,12 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         },
         {
           id: "tile-levelling-system",
-          title: "Tile Levelling System",
+          title: "Tile leveling systems for indoor and outdoor tiles",
           description:
             "Tile installation components presented in the Dakota catalogue.",
           image: Images.dakotaTileLevelling,
           specs: [{ label: "Components", value: "Wedges, clips, cylinders" }],
           details: {
-            origin: "Made in Italy",
             overview:
               "Tile levelling components used together during tile installation for an even, level finish.",
             images: [
@@ -401,7 +394,6 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             { label: "Materials", value: "Cast iron body, aluminium grill" },
           ],
           details: {
-            origin: "Made in India",
             overview:
               "A scupper drain available in 3-inch and 4-inch sizes, with a cast iron body and an aluminium grill.",
             images: [
@@ -429,12 +421,9 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             { label: "Materials", value: "Cast iron body, aluminium grill" },
           ],
           details: {
-            origin: "Made in India",
             overview:
               "A dome drain available in 3-inch and 4-inch sizes, with a cast iron body and an aluminium dome grill.",
-            images: [
-              { src: Images.kevesDomeDrain, alt: "Keves dome drain" },
-            ],
+            images: [{ src: Images.kevesDomeDrain, alt: "Keves dome drain" }],
             groups: [
               { title: "Sizes", items: ["3″", "4″"] },
               {
@@ -504,7 +493,6 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             { label: "Material", value: "PP" },
           ],
           details: {
-            origin: "Made in Turkey",
             overview:
               "A 75 mm PP waste water check valve that blocks sewer and infrastructure recoil, keeps mice and insects out of the building and prevents sewage odours. The top cover removes for easy, practical cleaning.",
             images: [
@@ -561,7 +549,6 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
             { label: "Feature", value: "Water balance system" },
           ],
           details: {
-            origin: "Made in Turkey",
             overview:
               "A locked anti flooding valve that keeps sewer water from flowing back into the building. A built-in water balance system (spirit level) helps set the valve level during installation, and it is available with a stainless steel or plastic flap.",
             images: [

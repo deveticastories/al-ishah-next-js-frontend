@@ -70,12 +70,15 @@ export const SERVICES = [
   },
 ];
 
-export type Brand = { id: string; name: string; logo: StaticImageData };
+export type Country = "Italy" | "India" | "Turkey";
+
+// Country is where the brand's products are made, shown as a "Made in" badge
+export type Brand = { id: string; name: string; logo: StaticImageData; country: Country };
 
 export const BRANDS: Brand[] = [
-  { id: "dakota", name: "Dakota", logo: Images.brandDakota },
-  { id: "keves", name: "Keves", logo: Images.brandKeves },
-  { id: "luxwares", name: "LuxWares", logo: Images.brandLuxwares },
+  { id: "dakota", name: "Dakota", logo: Images.brandDakota, country: "Italy" },
+  { id: "keves", name: "Keves", logo: Images.brandKeves, country: "India" },
+  { id: "luxwares", name: "LuxWares", logo: Images.brandLuxwares, country: "Turkey" },
 ];
 
 // Order used by the "Connecting Trusted Brands" marquee
