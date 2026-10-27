@@ -103,14 +103,39 @@ export default function Header() {
       {menuOpen && (
         <nav className="flex flex-col gap-4 border-t border-border-light bg-white px-4 py-6 md:hidden">
           {NAV_LINKS.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className={`font-heading text-nav ${isActive(pathname, link.href) ? "text-primary" : "text-dark"}`}
-            >
-              {link.label}
-            </Link>
+            <div key={link.label}>
+              <Link
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className={`font-heading text-nav ${
+                  (link.hasDropdown ? pathname === link.href : isActive(pathname, link.href))
+                    ? "text-primary"
+                    : "text-dark"
+                }`}
+              >
+                {link.hasDropdown ? `All ${link.label}` : link.label}
+              </Link>
+              {/* Mobile has no hover dropdown, so the brand catalogues are listed under Products */}
+              {link.hasDropdown && (
+                <ul className="mt-3 flex flex-col gap-3 border-l border-border-light pl-4">
+                  {BRANDS.filter((brand) => BRAND_CATALOGUES[brand.id]).map((brand) => {
+                    const href = Routes.brand(brand.id);
+                    return (
+                      <li key={brand.id}>
+                        <Link
+                          href={href}
+                          onClick={() => setMenuOpen(false)}
+                          aria-current={pathname === href ? "page" : undefined}
+                          className={`font-heading text-nav ${pathname === href ? "text-primary" : "text-muted"}`}
+                        >
+                          {brand.name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
           ))}
           <Button href={Routes.contact} className="mt-2 self-start">
             Get a Quote

@@ -26,7 +26,7 @@ export default function ProductsSection() {
           </p>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-[26px]">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-[26px]">
           <span className="w-full text-center text-body text-gray-text sm:mr-[7px] sm:w-auto">
             Choose your brand
           </span>
@@ -39,13 +39,13 @@ export default function ProductsSection() {
                 aria-pressed={selected}
                 aria-label={brand.name}
                 onClick={() => setSelectedBrand(brand.id)}
-                className={`flex h-[71px] w-[139px] items-center justify-center rounded border transition-colors ${
+                className={`flex h-[60px] w-[100px] items-center sm:h-[71px] sm:w-[139px] justify-center rounded border transition-colors ${
                   selected
                     ? "border-2 border-primary"
                     : "border-border-light hover:border-primary-light"
                 }`}
               >
-                <Image src={brand.logo} alt="" className="h-9 w-auto max-w-[100px] object-contain" />
+                <Image src={brand.logo} alt="" className="h-8 w-auto max-w-[80px] object-contain sm:h-9 sm:max-w-[100px]" />
               </button>
             );
           })}
