@@ -181,8 +181,7 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         {
           id: "outdoor-drainage-channels",
           title: "Outdoor Drainage Channels",
-          description:
-            "Drainage channels in multiple sizes and materials for outdoor applications.",
+          description: "Drainage channels for outdoor applications.",
           image: Images.dakotaOutdoorChannels,
           specs: [
             { label: "Materials", value: "Ductile iron, HDPE plastic" },

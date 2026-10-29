@@ -73,12 +73,22 @@ export const SERVICES = [
 export type Country = "Italy" | "India" | "Turkey";
 
 // Country is where the brand's products are made, shown as a "Made in" badge
-export type Brand = { id: string; name: string; logo: StaticImageData; country: Country };
+export type Brand = {
+  id: string;
+  name: string;
+  logo: StaticImageData;
+  country: Country;
+};
 
 export const BRANDS: Brand[] = [
   { id: "dakota", name: "Dakota", logo: Images.brandDakota, country: "Italy" },
   { id: "keves", name: "Keves", logo: Images.brandKeves, country: "India" },
-  { id: "luxwares", name: "LuxWares", logo: Images.brandLuxwares, country: "Turkey" },
+  {
+    id: "luxwares",
+    name: "LuxWares",
+    logo: Images.brandLuxwares,
+    country: "Turkey",
+  },
 ];
 
 // Order used by the "Connecting Trusted Brands" marquee
@@ -98,14 +108,14 @@ export const PRODUCTS: Product[] = [
     id: "arkimade-paving",
     brandId: "dakota",
     title: "Arkimade For Paving",
-    description: "Adjustable Race Floor pedestals for raised paving tiles.",
+    description: "Adjustable raced floor system for Tiles.",
     image: Images.dakotaArkimadePaving,
   },
   {
     id: "arkimade-decking",
     brandId: "dakota",
     title: "Arkimade For Decking",
-    description: "Adjustable Race Floor pedestals for timber decking.",
+    description: "Adjustable raced floor pedestal system for WPC wood.",
     image: Images.dakotaArkimadeDecking,
   },
   {
