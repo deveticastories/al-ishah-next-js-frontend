@@ -9,14 +9,23 @@ export const CONTACT_DETAILS: { title: string; lines: ContactLine[] }[] = [
     lines: [
       {
         value:
-          "Lorem ipsum dolor sit amet consectetur. Consequat quis et consectetur sit. Quam nunc elit ullamcorper ultricies.",
+          "AL IHSAS GEN.TR LLC SP Office No. 202-44, Floor No. 2, Al Ittihad Street,Al Nahda, Sharjah, UAE – 0000 | +971 54 401 8199",
       },
     ],
   },
   {
     title: "Phone",
-    lines: CONTACT_INFO.phones.map((phone) => ({ value: phone, href: `tel:${phone.replace(/\s/g, "")}` })),
+    lines: CONTACT_INFO.phones.map((phone) => ({
+      value: phone,
+      href: `tel:${phone.replace(/\s/g, "")}`,
+    })),
   },
-  { title: "Email", lines: CONTACT_INFO.emails.map((email) => ({ value: email, href: `mailto:${email}` })) },
+  {
+    title: "Email",
+    lines: CONTACT_INFO.emails.map((email) => ({
+      value: email,
+      href: `mailto:${email}`,
+    })),
+  },
   { title: "Business Hours", lines: [{ value: "[Working days and hours]" }] },
 ];
