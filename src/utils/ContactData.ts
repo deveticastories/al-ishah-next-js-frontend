@@ -27,5 +27,5 @@ export const CONTACT_DETAILS: { title: string; lines: ContactLine[] }[] = [
       href: `mailto:${email}`,
     })),
   },
-  { title: "Business Hours", lines: [{ value: "[Working days and hours]" }] },
+  // { title: "Business Hours", lines: [{ value: "[Working days and hours]" }] },
 ];
