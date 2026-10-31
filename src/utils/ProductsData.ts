@@ -70,6 +70,7 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         "Explore Dakota’s Range Of Drainage Channels, Catch Pits, Floor Support Systems, And Tile Levelling Products For Building And Outdoor Applications.",
       image: Images.dakotaHero,
       imageAlt: "Dakota drainage channel with galvanized steel grating",
+      darken: true,
     },
     about: {
       title: ["Practical Products For Building", "& Outdoor Applications"],
@@ -103,8 +104,7 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         {
           id: "arkimade-paving",
           title: "Arkimade For Paving",
-          description:
-            "Adjustable Race Floor pedestals for raised paving tiles.",
+          description: "Adjustable raced floor system for Tiles.",
           image: Images.dakotaArkimadePaving,
           specs: [
             { label: "Application", value: "Raised paving" },
@@ -142,8 +142,7 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
         {
           id: "arkimade-decking",
           title: "Arkimade For Decking",
-          description:
-            "Adjustable Race Floor pedestals for supporting timber decking.",
+          description: "Adjustable raced floor pedestal system for WPC wood.",
           image: Images.dakotaArkimadeDecking,
           specs: [
             { label: "Application", value: "Decking" },
@@ -351,6 +350,7 @@ export const BRAND_CATALOGUES: Record<string, BrandCatalogue> = {
       description:
         "Explore Keves Scupper And Dome Drains, Built With Cast Iron Bodies And Aluminium Grills For Roof Drainage Applications.",
       imageAlt: "Building products on a tiled floor",
+      darken: true,
     },
     about: {
       title: ["Durable Drains For", "Roofs & Terraces"],
