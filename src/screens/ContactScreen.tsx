@@ -13,11 +13,11 @@ export default function ContactScreen() {
       <Header />
       <main className="flex-1">
         <PageHero
-          align="center"
           image={Images.contactHero}
           imageAlt="Drainage channel with black grating on a wet tiled floor"
           title={["Let’s Talk"]}
           description="Have A Question Or Need More Information About Our Products? We’re Here To Help. Get In Touch With Our Team For Product Enquiries, Quotations, And Support."
+          darken
         />
         <ContactDetailsSection />
         <CtaBanner
