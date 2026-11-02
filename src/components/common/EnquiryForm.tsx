@@ -17,26 +17,13 @@ export default function EnquiryForm({
   messageClassName = "h-[160px]",
   submitClassName = "",
 }: EnquiryFormProps) {
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = event.currentTarget;
-    setStatus("sending");
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(Object.fromEntries(new FormData(form))),
-      });
-      if (!res.ok) throw new Error(`Request failed with status ${res.status}`);
-      form.reset();
-      setStatus("success");
-    } catch (error) {
-      console.error("Enquiry submit error:", error);
-      setStatus("error");
-    }
+    // TODO: send the enquiry to an API route / email service
+    event.currentTarget.reset();
+    setSubmitted(true);
   };
 
   return (
@@ -60,20 +47,14 @@ export default function EnquiryForm({
       />
       <button
         type="submit"
-        disabled={status === "sending"}
-        className={`h-[70px] rounded font-body text-body font-medium text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60 sm:col-span-2 ${submitClassName}`}
+        className={`h-[70px] rounded font-body text-body font-medium text-white transition-opacity hover:opacity-90 sm:col-span-2 ${submitClassName}`}
         style={{ background: Gradients.sendButton }}
       >
-        {status === "sending" ? "Sending..." : "Send Enquiry"}
+        Send Enquiry
       </button>
-      {status === "success" && (
+      {submitted && (
         <p role="status" className="text-body text-dark sm:col-span-2">
           Thank you! Our team will get back to you shortly.
-        </p>
-      )}
-      {status === "error" && (
-        <p role="alert" className="text-body text-red-600 sm:col-span-2">
-          Sorry, we couldn&apos;t send your enquiry. Please try again later.
         </p>
       )}
     </form>

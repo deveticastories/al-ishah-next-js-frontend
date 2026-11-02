@@ -13,6 +13,7 @@ export default function ContactScreen() {
       <Header />
       <main className="flex-1">
         <PageHero
+          align="center"
           image={Images.contactHero}
           imageAlt="Drainage channel with black grating on a wet tiled floor"
           title={["Let’s Talk"]}

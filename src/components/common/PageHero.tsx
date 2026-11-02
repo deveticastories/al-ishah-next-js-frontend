@@ -33,53 +33,44 @@ export default function PageHero({
 
   return (
     <>
-      {/* On phones the photo sits above the copy at full width so it isn't cropped to a narrow sliver */}
       <section
-        className={`relative flex flex-col overflow-hidden bg-dark lg:h-[838px] lg:flex-row ${
-          centered ? "lg:items-center" : "lg:items-start"
+        className={`relative flex min-h-[620px] overflow-hidden lg:h-[838px] ${
+          centered ? "items-center" : "items-end"
         }`}
       >
-        <div className="relative aspect-[16/9] w-full lg:absolute lg:inset-0 lg:aspect-auto">
-          {slides?.length ? (
-            <HeroCarousel slides={[{ image, alt: imageAlt }, ...slides]} />
-          ) : (
-            <Image
-              src={image}
-              alt={imageAlt}
-              fill
-              priority
-              placeholder="blur"
-              sizes="100vw"
-              className="object-cover object-center"
-            />
-          )}
-          {darken && (
-            <div className="absolute inset-0 hidden bg-gradient-to-r from-black/75 via-black/45 to-black/10 lg:block" />
-          )}
-          {/* Blends the photo's bottom edge into the copy panel below it */}
-          <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-dark to-transparent lg:hidden" />
-        </div>
+        {slides?.length ? (
+          <HeroCarousel slides={[{ image, alt: imageAlt }, ...slides]} />
+        ) : (
+          <Image
+            src={image}
+            alt={imageAlt}
+            fill
+            priority
+            placeholder="blur"
+            sizes="100vw"
+            className="object-cover object-[70%_center] lg:object-center"
+          />
+        )}
+        {darken && <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/10" />}
+        {/* Keeps the copy readable when the photo is cropped on small screens */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent lg:hidden" />
 
         <Container
           className={`relative ${
             centered
-              ? "py-10 text-center lg:pb-0 lg:pt-2"
-              : // Heading top is pinned at the same height on every page so moving between pages feels continuous
-                "pb-12 pt-6 lg:pb-0 lg:pt-[460px] xl:pl-[66px]"
+              ? "py-40 text-center lg:pb-0 lg:pt-2"
+              : `pb-16 pt-40 xl:pl-[66px] ${actions ? "lg:pb-[115px]" : "lg:pb-[192px]"}`
           }`}
         >
-          <div className="relative">
-            {/* Sits above the heading without pushing it down from the shared position */}
-            {badge && <div className="mb-[19px] xl:ml-1 lg:absolute lg:bottom-full lg:left-0">{badge}</div>}
-            <h1 className="font-heading text-[40px] font-medium leading-[0.95] tracking-[-0.04em] text-white sm:text-[56px] lg:text-display lg:leading-[0.92] lg:whitespace-nowrap">
-              {title.map((line, index) => (
-                <span key={line} className="block">
-                  {line}
-                  {index < title.length - 1 && " "}
-                </span>
-              ))}
-            </h1>
-          </div>
+          {badge && <div className="mb-[19px] xl:ml-1">{badge}</div>}
+          <h1 className="font-heading text-[40px] font-medium leading-[0.95] tracking-[-0.04em] text-white sm:text-[56px] lg:text-display lg:leading-[0.92] lg:whitespace-nowrap">
+            {title.map((line, index) => (
+              <span key={line} className="block">
+                {line}
+                {index < title.length - 1 && " "}
+              </span>
+            ))}
+          </h1>
           <p
             className={`text-body leading-6 text-white ${
               centered ? "mx-auto mt-[22px] max-w-[600px]" : "mt-5 max-w-[760px] xl:ml-1"
