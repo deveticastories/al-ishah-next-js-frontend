@@ -45,17 +45,23 @@ export default function HeroCarousel({ slides, interval = 5000 }: HeroCarouselPr
                 loading={index === 0 ? undefined : "eager"}
                 placeholder="blur"
                 sizes="100vw"
-                className="object-cover object-[70%_center] lg:object-center"
+                className="object-cover object-center"
               />
             </div>
           ))}
         </div>
       </div>
       {/* The stock photos are brighter than the original hero, so shade the side the copy sits on */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/15 to-transparent" aria-hidden="true" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 via-45% to-transparent" aria-hidden="true" />
+      <div
+        className="absolute inset-0 hidden bg-gradient-to-r from-black/45 via-black/15 to-transparent lg:block"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute inset-0 hidden bg-gradient-to-t from-black/75 via-black/30 via-45% to-transparent lg:block"
+        aria-hidden="true"
+      />
 
-      <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-2.5 lg:bottom-10">
+      <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2.5 lg:bottom-10">
         {slides.map((slide, index) => (
           <button
             key={slide.alt}
