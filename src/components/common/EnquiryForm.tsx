@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { startTransition, useActionState, useEffect, useRef, type FormEvent } from "react";
+import { sendEnquiry, type EnquiryState } from "@/actions/sendEnquiry";
 import { Gradients } from "@/utils/Colors";
 
 const inputClass =
@@ -17,17 +18,25 @@ export default function EnquiryForm({
   messageClassName = "h-[160px]",
   submitClassName = "",
 }: EnquiryFormProps) {
-  const [submitted, setSubmitted] = useState(false);
+  const [state, formAction, pending] = useActionState<EnquiryState, FormData>(sendEnquiry, {
+    status: "idle",
+  });
+  const formRef = useRef<HTMLFormElement>(null);
 
+  // Submit via onSubmit instead of action={...} so React doesn't auto-reset the form on errors
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // TODO: send the enquiry to an API route / email service
-    event.currentTarget.reset();
-    setSubmitted(true);
+    const formData = new FormData(event.currentTarget);
+    startTransition(() => formAction(formData));
   };
 
+  useEffect(() => {
+    if (state.status === "success") formRef.current?.reset();
+  }, [state]);
+
   return (
-    <form onSubmit={handleSubmit} className={`grid grid-cols-1 sm:grid-cols-2 ${className}`}>
+    <form ref={formRef} onSubmit={handleSubmit} className={`grid grid-cols-1 sm:grid-cols-2 ${className}`}>
+      <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       <input name="fullName" required placeholder="Full Name" aria-label="Full Name" className={`${inputClass} h-[70px]`} />
       <input name="companyName" placeholder="Company Name" aria-label="Company Name" className={`${inputClass} h-[70px]`} />
       <input name="email" type="email" required placeholder="Email Address" aria-label="Email Address" className={`${inputClass} h-[70px]`} />
@@ -47,14 +56,20 @@ export default function EnquiryForm({
       />
       <button
         type="submit"
-        className={`h-[70px] rounded font-body text-body font-medium text-white transition-opacity hover:opacity-90 sm:col-span-2 ${submitClassName}`}
+        disabled={pending}
+        className={`h-[70px] rounded disabled:cursor-not-allowed disabled:opacity-70 font-body text-body font-medium text-white transition-opacity hover:opacity-90 sm:col-span-2 ${submitClassName}`}
         style={{ background: Gradients.sendButton }}
       >
-        Send Enquiry
+        {pending ? "Sending..." : "Send Enquiry"}
       </button>
-      {submitted && (
+      {state.status === "success" && (
         <p role="status" className="text-body text-dark sm:col-span-2">
           Thank you! Our team will get back to you shortly.
+        </p>
+      )}
+      {state.status === "error" && (
+        <p role="alert" className="text-body text-red-600 sm:col-span-2">
+          {state.message}
         </p>
       )}
     </form>
