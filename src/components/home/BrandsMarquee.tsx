@@ -16,9 +16,9 @@ export default function BrandsMarquee() {
 
   return (
     <section className="pb-24 pt-24 lg:pb-[120px] lg:pt-[110px]">
-      <div className="text-center">
+      <div className="px-4 sm:px-0 sm:text-center">
         <SectionLabel>Our Brands</SectionLabel>
-        <SectionHeading className="mt-2.5 px-4 text-black">Connecting Trusted Brands</SectionHeading>
+        <SectionHeading className="mt-2.5 text-black sm:px-4">Connecting Trusted Brands</SectionHeading>
       </div>
 
       <div className="mt-12 overflow-hidden">

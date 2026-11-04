@@ -15,7 +15,7 @@ export default function ServicesSection() {
           {SERVICES.map((service, index) => (
             <div
               key={service.number}
-              className="group relative flex flex-col items-center px-4 text-center lg:[&:not(:first-child)]:border-l lg:[&:not(:first-child)]:border-divider"
+              className="group relative flex flex-col items-start sm:items-center sm:px-4 sm:text-center lg:[&:not(:first-child)]:border-l lg:[&:not(:first-child)]:border-divider"
             >
               {/* Number is clipped to its top half, as in the design */}
               <div className="h-[66px] overflow-hidden">
@@ -29,10 +29,10 @@ export default function ServicesSection() {
                   {service.number}
                 </span>
               </div>
-              <h3 className="mt-[30px] font-heading text-title font-medium tracking-[-0.03em] text-black">
+              <h3 className="mt-6 font-heading text-title sm:mt-[30px] font-medium tracking-[-0.03em] text-black">
                 {service.title}
               </h3>
-              <p className="mt-3 max-w-[220px] text-body leading-6 text-dark">
+              <p className="mt-2 sm:mt-3 sm:max-w-[220px] text-body leading-6 text-dark">
                 {service.description}
               </p>
             </div>

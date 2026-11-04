@@ -63,7 +63,7 @@ export default function PageHero({
                 {badge}
               </div>
             )}
-            <h1 className="font-heading text-[40px] font-medium leading-[0.95] tracking-[-0.04em] text-white sm:text-[56px] lg:text-display lg:leading-[0.92] lg:whitespace-nowrap">
+            <h1 className="font-heading text-[32px] font-medium leading-[1.15] tracking-[-0.02em] text-white sm:text-[56px] sm:leading-[0.95] sm:tracking-[-0.04em] lg:text-display lg:leading-[0.92] lg:whitespace-nowrap">
               {title.map((line, index) => (
                 <span key={line} className="block">
                   {line}

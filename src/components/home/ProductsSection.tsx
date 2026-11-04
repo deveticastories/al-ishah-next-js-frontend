@@ -17,7 +17,7 @@ export default function ProductsSection() {
   return (
     <section id="products" className="scroll-mt-[var(--header-height)] pt-24 lg:pt-[130px]">
       <Container>
-        <div className="text-center">
+        <div className="sm:text-center">
           <SectionLabel>Our Products</SectionLabel>
           <SectionHeading className="mt-2 text-black">Explore Our Product Range</SectionHeading>
           <p className="mx-auto mt-5 max-w-[530px] text-body leading-6 text-dark">
@@ -26,8 +26,8 @@ export default function ProductsSection() {
           </p>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-[26px]">
-          <span className="w-full text-center text-body text-gray-text sm:mr-[7px] sm:w-auto">
+        <div className="mt-10 flex flex-wrap items-center gap-3 sm:justify-center sm:gap-[26px]">
+          <span className="w-full text-body text-gray-text sm:mr-[7px] sm:w-auto">
             Choose your brand
           </span>
           {BRANDS.map((brand) => {
@@ -58,12 +58,12 @@ export default function ProductsSection() {
             ))}
           </div>
         ) : (
-          <p className="mt-16 text-center text-body text-gray-text lg:mt-[98px]">
+          <p className="mt-16 text-body sm:text-center text-gray-text lg:mt-[98px]">
             Products for this brand are coming soon.
           </p>
         )}
 
-        <div className="mt-[37px] text-center">
+        <div className="mt-[37px] sm:text-center">
           <p className="text-body text-gray-text">
             Browse our available products to find the right solutions for your needs
           </p>

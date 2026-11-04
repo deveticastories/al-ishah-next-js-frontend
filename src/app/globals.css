@@ -53,7 +53,16 @@ body {
   background: #ffffff;
   color: var(--c-dark);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
-  letter-spacing: -0.03em;
+  /* Normal spacing keeps small-screen text readable; the tighter design spacing applies on desktop */
+  letter-spacing: 0;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (min-width: 64rem) {
+  body {
+    letter-spacing: -0.03em;
+  }
 }
 
 @keyframes marquee {

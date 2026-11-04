@@ -17,7 +17,7 @@ export default function MarketsSection() {
 
         <div className="lg:-ml-[9px] lg:-mt-[40px]">
           <SectionLabel>Our Markets</SectionLabel>
-          <h2 className="mt-3 font-heading text-[34px] font-medium leading-[1.16] tracking-[-0.04em] sm:text-[42px] lg:text-h2">
+          <h2 className="mt-3 font-heading text-[28px] font-medium leading-[1.2] tracking-[-0.02em] sm:text-[42px] sm:leading-[1.16] sm:tracking-[-0.04em] lg:text-h2">
             International Sourcing.
             <br />
             Diverse Opportunities.

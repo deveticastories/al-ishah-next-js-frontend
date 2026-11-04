@@ -35,13 +35,13 @@ export default function AllProductsScreen() {
 
         <section className="pt-20 lg:pt-[119px]">
           <Container>
-            <div className="text-center">
+            <div className="sm:text-center">
               <p className="font-body text-body leading-6 text-primary">All brands</p>
               <SectionHeading className="mt-2 text-black">Explore Our Product Range</SectionHeading>
             </div>
 
             {/* Jump links to each brand's products */}
-            <nav aria-label="Brands" className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-[26px]">
+            <nav aria-label="Brands" className="mt-10 flex flex-wrap items-center gap-3 sm:justify-center sm:gap-[26px]">
               {CATALOGUE_BRANDS.map(({ brand }) => (
                 <a
                   key={brand.id}

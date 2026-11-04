@@ -29,9 +29,10 @@ export default function CtaBanner({
           <div className="max-w-[612px]">
             <SectionLabel>{label}</SectionLabel>
             <SectionHeading className="mt-[27px] text-black">
-              {title.map((line) => (
-                <span key={line} className="block">
+              {title.map((line, index) => (
+                <span key={line} className="sm:block">
                   {line}
+                  {index < title.length - 1 && " "}
                 </span>
               ))}
             </SectionHeading>

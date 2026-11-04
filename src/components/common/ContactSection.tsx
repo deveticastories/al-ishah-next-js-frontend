@@ -8,7 +8,7 @@ export default function ContactSection() {
     <section id="contact" className="scroll-mt-[var(--header-height)] pb-16 pt-16 lg:pb-[129px] lg:pt-[83px]">
       <Container className="grid gap-12 lg:grid-cols-[600px_580px] lg:justify-between xl:pl-[66px] xl:pr-[116px]">
         <div>
-          <h2 className="font-heading text-[34px] font-medium leading-tight tracking-[-0.01em] text-black sm:text-[42px] lg:text-h2">
+          <h2 className="font-heading text-[28px] font-medium leading-[1.2] tracking-[-0.01em] text-black sm:text-[42px] sm:leading-tight lg:text-h2">
             Let&rsquo;s Start A Conversation
           </h2>
           <p className="mt-[30px] max-w-[500px] text-body leading-[22px] text-footer-text lg:ml-1">

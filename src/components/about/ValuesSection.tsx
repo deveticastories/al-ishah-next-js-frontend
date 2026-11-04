@@ -19,7 +19,7 @@ export default function ValuesSection() {
   return (
     <section className="mt-24 bg-values-bg pb-24 pt-24 lg:mt-[159px] lg:pb-[145px] lg:pt-[127px]">
       <Container>
-        <SectionHeading className="text-center leading-[1.12] text-black lg:leading-[1.12]">
+        <SectionHeading className="text-black sm:text-center lg:leading-[1.12]">
           The Values That Move
           <br />
           Us Forward
@@ -43,10 +43,10 @@ export default function ValuesSection() {
             <div key={item.title} className="contents">
               {index > 0 && <div className="hidden bg-divider md:mt-[58px] md:block md:h-[169px]" aria-hidden="true" />}
               <div className={index > 0 ? "md:pl-[160px]" : "md:pr-10"}>
-                <h3 className="font-heading text-[40px] font-medium leading-none tracking-[-0.04em] text-black lg:text-h2">
+                <h3 className="font-heading text-[28px] font-medium leading-[1.2] tracking-[-0.02em] text-black sm:text-[40px] sm:leading-none sm:tracking-[-0.04em] lg:text-h2">
                   {item.title}
                 </h3>
-                <p className="mt-[52px] max-w-[372px] text-body leading-6 text-dark">{item.description}</p>
+                <p className="mt-4 max-w-[372px] sm:mt-[52px] text-body leading-6 text-dark">{item.description}</p>
               </div>
             </div>
           ))}

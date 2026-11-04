@@ -13,7 +13,7 @@ export default function CatalogueSection({ catalogue, country }: CatalogueSectio
   return (
     <section className="pt-20 lg:pt-[119px]">
       <Container>
-        <div className="text-center">
+        <div className="sm:text-center">
           <p className="font-body text-body leading-6 text-primary">Product categories</p>
           <SectionHeading className="mt-2 text-black">{catalogue.title}</SectionHeading>
           <p className="mx-auto mt-5 max-w-[490px] text-body leading-6 text-dark">{catalogue.description}</p>

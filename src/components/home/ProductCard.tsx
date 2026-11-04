@@ -28,8 +28,8 @@ export default function ProductCard({ product }: ProductCardProps) {
         {product.title}
       </h3>
 
-      <div className="mt-3 flex items-end justify-between gap-2.5">
-        <p className="line-clamp-2 min-h-12 max-w-[285px] text-body leading-6 text-dark">
+      <div className="mt-3 flex flex-col items-start gap-2.5 sm:flex-row sm:items-end sm:justify-between">
+        <p className="max-w-[285px] sm:line-clamp-2 sm:min-h-12 text-body leading-6 text-dark">
           {product.description}
         </p>
         <Link
